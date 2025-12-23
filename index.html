@@ -2,94 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sweet Arts | Art in Every Bite</title>
+  <title>Sweet Arts Bakery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="navbar"></div>
+    <script src="js/navbar.js"></script>
 
-<!-- NAVBAR -->
-<header class="navbar fade-in">
-  <div class="logo">
-    <!-- Replace text with <img src="logo.png"> -->
-    Sweet Arts
-  </div>
-  <nav>
-    
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="checkout.html">Order</a>
-    <a href="#contact">Contact</a>
+  <!-- HERO SECTION -->
+  <section class="hero">
 
-
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content slide-up">
-    <h1>Art in Every Bite</h1>
-    <p>Freshly baked cakes, pastries & desserts crafted with love.</p>
-    <a href="menu.html" class="btn">Order Online</a>
-  </div>
-</section>
-
-<!-- BEST SELLERS -->
-<section class="section reveal">
-  <h2>Our Best Sellers</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Chocolate Truffle Cake</h3>
-      <p>Rich, indulgent & smooth</p>
-      <span>₹799</span>
-    </div>
-    <div class="card">
-      <h3>Red Velvet Cake</h3>
-      <p>A timeless classic</p>
-      <span>₹849</span>
-    </div>
-    <div class="card">
-      <h3>Fudge Brownies</h3>
-      <p>Soft & gooey inside</p>
-      <span>₹149</span>
+  <div class="hero-overlay">
+    <h1>Freshly Baked with Love</h1>
+    <p>
+      Discover the perfect blend of tradition and taste at Sweet Arts Bakery
+    </p>
+    <div class="hero-buttons">
+      <a href="products.html"><button class="btn">Order Now</button></a>
+      <a href="contact.html"><button class="btn outline">Contact Us</button></a>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
-<section class="why-us reveal">
-  <div class="why-card">
-    🎂
-    <h4>Custom Cakes</h4>
-    <p>Designed for your moments</p>
-  </div>
-  <div class="why-card">
-    🧁
-    <h4>Freshly Baked</h4>
-    <p>Prepared every morning</p>
-  </div>
-  <div class="why-card">
-    🚚
-    <h4>Easy Ordering</h4>
-    <p>Quick online checkout</p>
-  </div>
-</section>
 
-<!-- CTA -->
-<section class="cta reveal">
-  <h2>Make Your Day Sweeter</h2>
-  <a href="checkout.html" class="btn dark">Start Ordering</a>
-</section>
+  <!-- PRODUCTS PREVIEW -->
+  <section class="section">
+    <h2 class="section-title">Our Specialties</h2>
+    <p class="section-subtitle">
+      From classic breads to decadent desserts, everything is handcrafted daily
+    </p>
 
-<!-- FOOTER -->
-<footer>
-  © 2025 Sweet Arts • Made with ❤️
-</footer>
+    <div class="grid">
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250" class="card-img">
+        <h3>Cakes</h3>
+        <p>Custom cakes for all occasions</p>
+      </div>
 
-<script src="app.js"></script>
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250" class="card-img">
+        <h3>Pastries</h3>
+        <p>Flaky, buttery, and delicious</p>
+      </div>
+
+      <div class="card">
+        <img src="https://via.placeholder.com/400x250" class="card-img">
+        <h3>Cookies</h3>
+        <p>Freshly baked treats every day</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+      <a href="products.html"><button class="btn">View All Products</button></a>
+    </div>
+  </section>
+
+  <!-- SPECIAL ORDERS -->
+  <section class="highlight">
+    <h2>Special Orders & Catering</h2>
+    <p>
+      Planning an event? We offer custom cakes, catering services, and bulk orders.
+      Please contact us at least 48 hours in advance.
+    </p>
+    <a href="contact.html"><button class="btn">Request a Quote</button></a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h3>Sweet Arts Bakery</h3>
+        <p>
+          Serving handcrafted baked goods with love and passion.
+          Freshly baked every single day.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a><br>
+        <a href="products.html">Products</a><br>
+        <a href="gallery.html">Gallery</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div>
+        <h3>Connect With Us</h3>
+        <p>Instagram | Facebook | Twitter</p>
+      </div>
+    </div>
+
+    <p class="footer-bottom">
+      © 2025 Sweet Arts Bakery. All rights reserved.
+    </p>
+  </footer>
+
 </body>
 </html>

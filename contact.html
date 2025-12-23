@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sweet Arts | Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Shared Navbar -->
+  <div id="navbar"></div>
+
+  <section class="section">
+    <h1 class="section-title">Visit Us</h1>
+    <p class="section-subtitle">
+      Stop by our bakery or get in touch with us
+    </p>
+
+      <div class="grid"> 
+      <div class="card"> 
+        <h3>📍 Address</h3> 
+        <p>Sweet Arts Bakery<br>New Delhi</p> 
+    </div>
+      <div class="card">
+        <h3>📞 Phone</h3>
+        <p>+91 9999304389<br>Call us for orders</p>
+      </div>
+
+      <div class="card">
+        <h3>✉️ Email</h3>
+        <p>avneetoberoi739@gmail.com<br>We reply within 24 hours</p>
+      </div>
+
+      <div class="card">
+        <h3>⏰ Hours</h3>
+        <p>
+          Mon–Fri: 9am – 9pm<br>
+          Sat–Sun: 10am – 10pm
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="card" style="max-width:700px; margin:40px auto;">
+  <h2 style="margin-bottom:10px;">🎂 Special Order / Custom Quote</h2>
+  <p style="color:#555; margin-bottom:20px;">
+    Planning a birthday, wedding, or bulk order? Tell us your requirements and
+    we’ll get back to you with a quote.
+  </p>
+
+  <form id="quoteForm">
+    <input type="text" id="name" placeholder="Full Name" required class="form-input">
+    <input type="tel" id="phone" placeholder="Phone Number" required class="form-input">
+    <input type="email" id="email" placeholder="Email Address" class="form-input">
+
+    <select id="orderType" class="form-input" required>
+      <option value="">Select Order Type</option>
+      <option value="Custom Cake">Custom Cake</option>
+      <option value="Wedding Cake">Wedding Cake</option>
+      <option value="Birthday Cake">Birthday Cake</option>
+      <option value="Bulk Order">Bulk Order</option>
+      <option value="Corporate Catering">Corporate Catering</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <input type="date" id="eventDate" class="form-input" required>
+
+    <textarea id="details" placeholder="Describe your order (size, flavor, design, quantity, budget, etc.)"
+      rows="5" class="form-input" required></textarea>
+
+    <button type="submit" class="btn">Request Quote</button>
+    </form>
+
+    <p id="quoteMsg" style="margin-top:15px; font-weight:600;"></p>
+    </div>
+  
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/footer.js"></script>
+  <script type="module" src="js/quote.js"></script>
+
+
+</body>
+</html>

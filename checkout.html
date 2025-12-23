@@ -1,43 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Sweet Arts | Checkout</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <title>Sweet Arts - Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div id="navbar"></div>
+  <script src="js/navbar.js"></script>
 
-<header class="navbar">
-  <div class="logo">Sweet Arts</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="checkout.html" class="active">Checkout</a>
-  </nav>
-</header>
+  <h1 class="title">Checkout</h1>
 
-<section class="section">
-  <h2>Checkout</h2>
+  <div class="card" style="max-width:600px; margin: 0 auto;">
+    <input id="name" placeholder="Full Name" style="width:90%; padding:10px; margin:8px 0;">
+    <input id="phone" placeholder="Phone" style="width:90%; padding:10px; margin:8px 0;">
+    <textarea id="address" placeholder="Delivery Address" style="width:90%; padding:10px; margin:8px 0;"></textarea>
+    <label style="font-weight:600;">Delivery Date</label>
+    <input
+     type="date"
+     id="deliveryDate"
+     class="form-input"
+     required
+     >
 
-  <div class="checkout-grid">
-    <div class="card">
-      <h3>Customer Details</h3>
-      <input placeholder="Full Name" id="name">
-      <input placeholder="Phone Number" id="phone">
-      <textarea placeholder="Delivery Address" id="address"></textarea>
-      <button onclick="placeOrder()">Place Order</button>
-    </div>
+    <h3>Payment Method</h3>
+    <label><input type="radio" name="pay" value="COD" checked> Cash on Delivery</label><br>
 
-    <div class="card">
-      <h3>Your Cart</h3>
-      <div id="cartItems"></div>
-      <h4>Total: ₹<span id="total">0</span></h4>
-    </div>
+    <button class="btn" id="placeOrder">Place Order</button>
   </div>
-</section>
+  <div id="footer"></div>
+  <script src="js/footer.js"></script>
 
-<script src="cart.js"></script>
+
+  <script type="module" src="js/checkout.js"></script>
 </body>
 </html>
