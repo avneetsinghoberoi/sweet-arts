@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Login - Sweet Arts</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main style="max-width:520px;margin:40px auto;padding:16px;">
+    <h2>Login</h2>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <input id="email" type="email" placeholder="Email" />
+      <input id="password" type="password" placeholder="Password" />
+      <div id="signupFields" style="display:none; flex-direction:column; gap:10px;">
+         <input id="fullName" type="text" placeholder="Full Name" />
+         <input id="phone" type="tel" placeholder="Phone Number" />
+         <textarea id="address" placeholder="Delivery Address"></textarea>
+      </div>
+
+      <button id="loginBtn">Login</button>
+      <button id="signupBtn" style="opacity:0.8;">Create Account</button>
+
+      <p id="msg"></p>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/footer.js"></script>
+  <script type="module" src="js/auth-ui.js"></script>
+</body>
+</html>

@@ -1,9 +1,25 @@
-import { db } from "./firebase.js";
+import { db, auth } from "./firebase.js";
+
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
 import {
   collection,
   addDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+let currentUser = null;
+
+// ✅ Mandate login for checkout page
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    alert("Please login to place an order.");
+    localStorage.setItem("redirectAfterLogin", "checkout.html"); // optional UX
+    window.location.href = "login.html";
+    return;
+  }
+  currentUser = user;
+});
 
 // 🔒 Set minimum delivery date = today + 2 days (UI restriction)
 const deliveryInput = document.getElementById("deliveryDate");
@@ -17,6 +33,13 @@ deliveryInput.setAttribute("min", minDate);
 
 document.getElementById("placeOrder").addEventListener("click", async () => {
   try {
+    // ✅ Ensure user is logged in (extra safety)
+    if (!currentUser) {
+      alert("Please login again.");
+      window.location.href = "login.html";
+      return;
+    }
+
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length === 0) {
       alert("Cart is empty");
@@ -28,16 +51,20 @@ document.getElementById("placeOrder").addEventListener("click", async () => {
     const phone = document.getElementById("phone").value.trim();
     const address = document.getElementById("address").value.trim();
     const deliveryDate = document.getElementById("deliveryDate").value;
-    const paymentMode = document.querySelector(
-      'input[name="pay"]:checked'
-    ).value;
+
+    const payEl = document.querySelector('input[name="pay"]:checked');
+    if (!payEl) {
+      alert("Please select payment mode.");
+      return;
+    }
+    const paymentMode = payEl.value;
 
     if (!name || !phone || !address || !deliveryDate) {
       alert("Please fill all details");
       return;
     }
 
-    // 🔒 STRICT DATE VALIDATION (backend-safe)
+    // 🔒 STRICT DATE VALIDATION
     const selectedDate = new Date(deliveryDate);
     selectedDate.setHours(0, 0, 0, 0);
 
@@ -50,21 +77,15 @@ document.getElementById("placeOrder").addEventListener("click", async () => {
       return;
     }
 
-    const total = cart.reduce(
-      (sum, item) => sum + item.price * item.qty,
-      0
-    );
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-    // 🔹 ORDER DATA (NOW INCLUDES DELIVERY DATE)
+    // ✅ ORDER DATA includes uid
     const orderData = {
-      customer: {
-        name,
-        phone,
-        address
-      },
+      uid: currentUser.uid,
+      customer: { name, phone, address },
       items: cart,
       total,
-      deliveryDate, // ✅ STORED
+      deliveryDate,
       paymentMode,
       status: "Pending COD",
       createdAt: serverTimestamp()
@@ -84,6 +105,7 @@ document.getElementById("placeOrder").addEventListener("click", async () => {
     alert("Something went wrong. Check console.");
   }
 });
+
 
 
 

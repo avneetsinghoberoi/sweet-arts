@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My Orders - Sweet Arts</title>
+
+  <!-- NEW css for orders page -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="navbar"></div>
+
+  <main class="orders-page">
+    <div class="orders-wrap">
+
+      <section class="orders-hero">
+        <div>
+          <h2 class="orders-title">My Orders</h2>
+          <p class="orders-subtitle">Track your previous orders, delivery date and status.</p>
+        </div>
+
+        <div class="orders-actions">
+          <div class="searchbox">
+            <span class="icon">🔎</span>
+            <input id="searchInput" placeholder="Search by status / date / item..." />
+          </div>
+
+          <button class="btn btn-ghost" id="refreshBtn">Refresh</button>
+          <button class="btn btn-primary" id="logoutBtn">Logout</button>
+        </div>
+      </section>
+
+      <div class="orders-meta">
+        <div class="chip">Total orders: <b id="countChip">0</b></div>
+        <div class="chip">Latest status: <b id="statusChip">—</b></div>
+      </div>
+
+      <div id="orders" class="orders-list"></div>
+
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script type="module" src="js/navbar.js"></script>
+  <script type="module" src="js/footer.js"></script>
+  <script type="module" src="js/my-orders.js"></script>
+</body>
+</html>
+

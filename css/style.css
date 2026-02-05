@@ -337,5 +337,325 @@ h1, h2, h3 {
   color:#fff;
   border-color:#111;
 }
+/*
+=========================================
+   MY ORDERS PAGE STYLES (paste at end of style.css)
+   Scope: only affects elements inside .orders-page
+   ========================================= */
+
+:root{
+  --sa-bg: #fff7fb;
+  --sa-card: rgba(255, 255, 255, 0.78);
+  --sa-border: rgba(140, 60, 90, 0.18);
+  --sa-text: #2a1a1f;
+  --sa-muted: rgba(42, 26, 31, 0.72);
+  --sa-shadow: 0 14px 40px rgba(42, 26, 31, 0.10);
+  --sa-shadow-soft: 0 10px 26px rgba(42, 26, 31, 0.08);
+  --sa-radius: 18px;
+
+  --sa-pink: #ff5ea8;
+  --sa-pink2: #ff7cc0;
+  --sa-green: #25b57a;
+  --sa-amber: #f6a800;
+  --sa-red: #e34b4b;
+  --sa-chip: rgba(255, 94, 168, 0.10);
+}
+
+/* Page background */
+.orders-page{
+  min-height: 70vh;
+  padding: 26px 14px 50px;
+  background:
+    radial-gradient(900px 380px at 20% 0%, rgba(255, 94, 168, 0.12), transparent 55%),
+    radial-gradient(900px 380px at 80% 15%, rgba(246, 168, 0, 0.10), transparent 55%),
+    radial-gradient(900px 450px at 50% 100%, rgba(37, 181, 122, 0.10), transparent 60%),
+    var(--sa-bg);
+  color: var(--sa-text);
+}
+
+/* Container */
+.orders-wrap{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* Hero header */
+.orders-hero{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.orders-title{
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.2px;
+}
+
+.orders-subtitle{
+  margin: 6px 0 0;
+  color: var(--sa-muted);
+  font-size: 14px;
+}
+
+/* Top controls */
+.orders-actions{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Search */
+.searchbox{
+  position: relative;
+  width: min(360px, 70vw);
+}
+
+.searchbox input{
+  width: 100%;
+  padding: 11px 12px 11px 38px;
+  border: 1px solid var(--sa-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  outline: none;
+  box-shadow: 0 8px 20px rgba(42, 26, 31, 0.05);
+}
+
+.searchbox input:focus{
+  border-color: rgba(255, 94, 168, 0.45);
+  box-shadow: 0 10px 26px rgba(255, 94, 168, 0.12);
+}
+
+.searchbox .icon{
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn{
+  border: 0;
+  cursor: pointer;
+  padding: 11px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: transform .08s ease, box-shadow .18s ease, opacity .18s ease;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{
+  color: #fff;
+  background: linear-gradient(135deg, var(--sa-pink), var(--sa-pink2));
+  box-shadow: 0 14px 30px rgba(255, 94, 168, 0.22);
+}
+
+.btn-primary:hover{
+  box-shadow: 0 18px 34px rgba(255, 94, 168, 0.28);
+}
+
+.btn-ghost{
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--sa-border);
+  color: var(--sa-text);
+  box-shadow: 0 12px 24px rgba(42, 26, 31, 0.06);
+}
+
+.btn-ghost:hover{ opacity: 0.95; }
+
+.small-btn{
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+/* Summary chips */
+.orders-meta{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0 16px;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--sa-chip);
+  border: 1px solid rgba(255, 94, 168, 0.18);
+  color: var(--sa-text);
+  font-size: 13px;
+}
+
+.chip b{ font-weight: 800; }
+
+/* Orders list */
+.orders-list{
+  display: grid;
+  gap: 14px;
+}
+
+/* Card */
+.order-card{
+  background: var(--sa-card);
+  border: 1px solid var(--sa-border);
+  border-radius: var(--sa-radius);
+  box-shadow: var(--sa-shadow-soft);
+  backdrop-filter: blur(8px);
+  padding: 14px;
+  overflow: hidden;
+}
+
+.order-top{
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.order-id{
+  font-size: 12px;
+  color: var(--sa-muted);
+  margin-bottom: 6px;
+}
+
+.order-row{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.order-kv{
+  font-size: 13px;
+  color: var(--sa-muted);
+}
+
+.order-kv b{ color: var(--sa-text); }
+
+.total-box{
+  text-align: right;
+  min-width: 180px;
+}
+
+.total{
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.payment{
+  margin-top: 6px;
+  color: var(--sa-muted);
+  font-size: 13px;
+}
+
+/* Status badge */
+.badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid rgba(42,26,31,0.12);
+  background: rgba(255,255,255,0.7);
+}
+
+.dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.badge.pending .dot{ background: var(--sa-amber); }
+.badge.confirmed .dot{ background: var(--sa-green); }
+.badge.cancelled .dot{ background: var(--sa-red); }
+.badge.default .dot{ background: rgba(42,26,31,0.45); }
+
+/* Expand section */
+.order-items{
+  margin-top: 12px;
+  border-top: 1px dashed rgba(42,26,31,0.18);
+  padding-top: 12px;
+  display: none;
+}
+
+.order-items.open{ display: block; }
+
+.items-grid{
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.item{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  background: rgba(255,255,255,0.65);
+  border: 1px solid rgba(42,26,31,0.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.item-name{
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.item-meta{
+  color: var(--sa-muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.item-price{
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+/* Card actions */
+.card-actions{
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Empty / loading */
+.state-card{
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--sa-border);
+  border-radius: var(--sa-radius);
+  padding: 18px;
+  box-shadow: var(--sa-shadow);
+}
+
+.state-card p{
+  margin: 6px 0 0;
+  color: var(--sa-muted);
+}
+
+/* Mobile */
+@media (max-width: 520px){
+  .orders-title{ font-size: 24px; }
+  .total-box{ text-align: left; min-width: unset; }
+  .searchbox{ width: 100%; }
+}
+
 
 

@@ -1,24 +1,36 @@
-import { auth } from "./firebase.js";
-import { signInWithEmailAndPassword }
-  from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+import { auth, db } from "./firebase.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 const msg = document.getElementById("msg");
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
+  msg.textContent = "";
   try {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const cred = await signInWithEmailAndPassword(
+      auth,
+      email.value.trim(),
+      password.value
+    );
 
-    console.log("Attempting login:", email);
+    // ✅ Verify admin using admins/{uid}
+    const uid = cred.user.uid;
+    const adminSnap = await getDoc(doc(db, "admins", uid));
 
-    await signInWithEmailAndPassword(auth, email, password);
+    if (!adminSnap.exists()) {
+      msg.textContent = "Not an admin account.";
+      // optional: sign out immediately
+      await auth.signOut();
+      return;
+    }
 
-    console.log("✅ Admin logged in");
-    window.location.href = "admin-dashboard.html";
-
-  } catch (err) {
-    console.error("❌ Login error:", err);
-    msg.innerText = err.message;
+    // ✅ Redirect to dashboard
+    window.location.href = "admin.html";
+  } catch (e) {
+    msg.textContent = e.message;
   }
 });
+
 
