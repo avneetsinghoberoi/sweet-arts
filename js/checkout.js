@@ -87,7 +87,7 @@ document.getElementById("placeOrder").addEventListener("click", async () => {
       total,
       deliveryDate,
       paymentMode,
-      status: "Pending COD",
+      status: "upcoming",
       createdAt: serverTimestamp()
     };
 

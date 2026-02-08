@@ -1,8 +1,10 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged, signOut } from
   "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-import { collection, query, where, orderBy, getDocs } from
+import { collection, query, where, orderBy, onSnapshot,doc, getDoc } from
   "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+
 
 const ordersDiv = document.getElementById("orders");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -12,6 +14,12 @@ const searchInput = document.getElementById("searchInput");
 const countChip = document.getElementById("countChip");
 const statusChip = document.getElementById("statusChip");
 
+const greetUser = document.getElementById("greetUser");
+const profileName = document.getElementById("profileName");
+const profileEmail = document.getElementById("profileEmail");
+const profilePhone = document.getElementById("profilePhone");
+
+
 let cachedOrders = [];
 
 logoutBtn?.addEventListener("click", async () => {
@@ -19,7 +27,10 @@ logoutBtn?.addEventListener("click", async () => {
   window.location.href = "login.html";
 });
 
-refreshBtn?.addEventListener("click", () => loadOrders());
+refreshBtn?.addEventListener("click", () => {
+  if (auth.currentUser) loadOrders(auth.currentUser.uid);
+});
+
 
 searchInput?.addEventListener("input", () => {
   renderOrders(filterOrders(searchInput.value));
@@ -33,11 +44,19 @@ function formatDate(ts) {
 
 function toNiceStatus(status = "") {
   const s = status.toLowerCase();
-  if (s.includes("pending")) return { cls: "pending", label: status || "Pending" };
+
+  if (s.includes("completed") || s.includes("delivered")) {
+    return { cls: "completed", label: "Completed" };
+  }
+  if (s.includes("pending") || s.includes("upcoming")) {
+    return { cls: "pending", label: status || "Upcoming" };
+  }
   if (s.includes("confirm")) return { cls: "confirmed", label: status };
   if (s.includes("cancel")) return { cls: "cancelled", label: status };
+
   return { cls: "default", label: status || "Processing" };
 }
+
 
 function safeMoney(n) {
   const num = Number(n || 0);
@@ -161,8 +180,26 @@ function renderOrders(list) {
     });
   });
 }
+async function loadProfile(uid) {
+  try {
+    const snap = await getDoc(doc(db, "users", uid));
+    if (!snap.exists()) return;
 
-async function loadOrders(uid) {
+    const u = snap.data();
+
+    if (greetUser) greetUser.textContent = `Hi, ${u.fullName || "User"} 👋`;
+    if (profileName) profileName.textContent = u.fullName || "—";
+    if (profileEmail) profileEmail.textContent = u.email || auth.currentUser?.email || "—";
+    if (profilePhone) profilePhone.textContent = u.phone || "—";
+  } catch (e) {
+    console.error("Profile fetch error:", e);
+  }
+}
+
+
+let unsubscribeOrders = null;
+
+function loadOrders(uid) {
   renderState("Loading your orders…", "Just a moment.");
 
   try {
@@ -172,23 +209,30 @@ async function loadOrders(uid) {
       orderBy("createdAt", "desc")
     );
 
-    const snap = await getDocs(q);
+    // stop old listener if any
+    if (unsubscribeOrders) unsubscribeOrders();
 
-    cachedOrders = [];
-    snap.forEach(doc => cachedOrders.push(doc.data()));
+    unsubscribeOrders = onSnapshot(q, (snap) => {
+      cachedOrders = [];
+      snap.forEach(d => cachedOrders.push({ id: d.id, ...d.data() }));
+      renderOrders(cachedOrders);
+    });
 
-    renderOrders(cachedOrders);
   } catch (e) {
     console.error(e);
     renderState("Could not load orders", "Check Firestore rules and console errors.");
   }
 }
 
+
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "login.html";
     return;
   }
-  await loadOrders(user.uid);
+
+  await loadProfile(user.uid);
+  loadOrders(user.uid);
 });
+
 

@@ -1,25 +1,90 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
   <title>Admin Dashboard - Sweet Arts</title>
   <link rel="stylesheet" href="/css/style.css" />
-</head>
-<body>
-  <h2 style="text-align:center;margin-top:30px;">📦 Admin Dashboard</h2>
 
-  <div style="max-width:980px;margin:20px auto;">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <h3>Upcoming Orders</h3>
+  <style>
+    .admin-wrap{
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    .admin-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin: 12px 0 18px;
+    }
+
+    .admin-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    .admin-col{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .admin-col h3{
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    /* Make long order lists scroll inside each column */
+    .admin-list{
+      max-height: 72vh;
+      overflow:auto;
+      padding-right: 6px;
+    }
+
+    /* Better card spacing in columns */
+    #upcoming .card, #completed .card{
+      margin: 12px 0 !important;
+    }
+
+    /* Responsive: stack columns on mobile */
+    @media (max-width: 900px){
+      .admin-grid{ grid-template-columns: 1fr; }
+      .admin-list{ max-height: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <h2 style="margin:0;">📦 Admin Dashboard</h2>
       <button id="logoutBtn" class="btn">Logout</button>
     </div>
 
-    <div id="upcoming"></div>
+    <div class="admin-grid">
+      <!-- LEFT: UPCOMING -->
+      <section class="admin-col">
+        <h3>Upcoming Orders</h3>
+        <div id="upcoming" class="admin-list"></div>
+      </section>
 
-    <h3 style="margin-top:24px;">Completed Orders</h3>
-    <div id="completed"></div>
+      <!-- RIGHT: COMPLETED -->
+      <section class="admin-col">
+        <h3>Completed Orders</h3>
+        <div id="completed" class="admin-list"></div>
+      </section>
+    </div>
   </div>
 
   <script type="module" src="js/admin.js"></script>
 </body>
 </html>
+

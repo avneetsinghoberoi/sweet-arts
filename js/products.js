@@ -1,25 +1,85 @@
 const productsByCategory = {
   cakes: [
-    { id: "cake01", name: "Chocolate Truffle Cake", price: 699, img: "assets/images/choco truffle cake.png"},
-    {id: "cake02", name: "Chocolate Cake", price: 799, img: "assets/images/chocolate_cake.png" },
-    {id: "cake03", name: "Red Velvet Cake", price: 799, img: "assets/images/red velvet cake.png" },
-    {id: "cake04", name: "Assorted Fruits Cake", price: 799, img: "assets/images/Fruit cake.webp" },
-    {id: "cake05", name: "Blueberry Cake", price: 799, img: "assets/images/blueberry cake.jpeg" },
-    {id: "cake06", name: "Ferrero Rocher Cake", price: 799, img: "assets/images/ferrero rocher cake.png" },
-    {id: "cake07", name: "KitKat Cake", price: 799, img: "assets/images/kit kat cake.webp" },
-    {id: "cake08", name: "Nutella Cake", price: 799, img: "assets/images/nutella cake.webp" },
-    {id: "cake09", name: "Rasmalai Cake", price: 799, img: "assets/images/rasmalai_cake.jpg" },
-    {id: "cake10", name: "Rainbow Cake", price: 799, img: "assets/images/rainbow cake.webp" },
-    {id: "cake11", name: "Lotus Biscoff Cake", price: 799, img: "assets/images/lotus biscoff cake.jpeg" },
-    {id: "cake12", name: "Hazelnut Cake", price: 799, img: "assets/images/hazelnut cake.jpg" },
-    {id: "cake13", name: "Walnut Vanilla Cake", price: 799, img: "assets/images/walnut_vanilla.png" },
-    {id: "cake14", name: "ButterScotch Cake", price: 799, img: "assets/images/butterscotch.webp" },
-    {id: "cake15", name: "Black Forest Cake", price: 799, img: "assets/images/black forest cake.jpg" },
-    {id: "cake16", name: "Pineapple Cake", price: 799, img: "assets/images/Pineapple_Fruit_cake.webp" },
-    {id: "cake17", name: "Mango Cake", price: 799, img: "assets/images/mango cake.png" },
-    {id: "cake18", name: "Orange Cake", price: 799, img: "assets/images/orange cake.jpg" },
-    {id: "cake19", name: "Strawberry Cake", price: 799, img: "assets/images/strawberry cake.png" },
-    {id: "cake20", name: "Gulab Jamun Cake", price: 799, img: "assets/images/gulab jamun cake.jpg" },
+    { id: "cake01", name: "Chocolate Truffle Cake", price: 699, img: "assets/images/choco truffle cake.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ]},
+    {id: "cake02", name: "Chocolate Cake", price: 799, img: "assets/images/chocolate_cake.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake03", name: "Red Velvet Cake", price: 799, img: "assets/images/red velvet cake.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake04", name: "Assorted Fruits Cake", price: 799, img: "assets/images/Fruit cake.webp",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake05", name: "Blueberry Cake", price: 799, img: "assets/images/blueberry cake.jpeg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake06", name: "Ferrero Rocher Cake", price: 799, img: "assets/images/ferrero rocher cake.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake07", name: "KitKat Cake", price: 799, img: "assets/images/kit kat cake.webp",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake08", name: "Nutella Cake", price: 799, img: "assets/images/nutella cake.webp",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake09", name: "Rasmalai Cake", price: 799, img: "assets/images/rasmalai_cake.jpg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake10", name: "Rainbow Cake", price: 799, img: "assets/images/rainbow cake.webp",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake11", name: "Lotus Biscoff Cake", price: 799, img: "assets/images/lotus biscoff cake.jpeg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake12", name: "Hazelnut Cake", price: 799, img: "assets/images/hazelnut cake.jpg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake13", name: "Walnut Vanilla Cake", price: 799, img: "assets/images/walnut_vanilla.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake14", name: "ButterScotch Cake", price: 799, img: "assets/images/butterscotch.webp",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake15", name: "Black Forest Cake", price: 799, img: "assets/images/black forest cake.jpg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake16", name: "Pineapple Cake", price: 799, img: "assets/images/Pineapple_Fruit_cake.webp",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake17", name: "Mango Cake", price: 799, img: "assets/images/mango cake.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake18", name: "Orange Cake", price: 799, img: "assets/images/orange cake.jpg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake19", name: "Strawberry Cake", price: 799, img: "assets/images/strawberry cake.png",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
+    {id: "cake20", name: "Gulab Jamun Cake", price: 799, img: "assets/images/gulab jamun cake.jpg",variants: [
+    { label: "1 Pound", price: 699 },
+    { label: "2 Pound", price: 1299 }
+  ] },
   ],
   pastries: [
     { id: "pastry01", name: "Chocolate Pastry", price: 99, img: "assets/images/chocolate pastry.webp" },
@@ -56,75 +116,184 @@ const productsByCategory = {
 
   ],
 };
+
 const categoryList = [
   { key: "cakes", label: "CAKES" },
   { key: "pastries", label: "PASTRIES" },
   { key: "dryCakes", label: "DRY CAKES" },
   { key: "Gifting", label: "GIFTS" },
 ];
-
-function showCartBanner() {
-  const banner = document.getElementById("cartBanner");
-  banner.classList.add("show");
-
-  setTimeout(() => {
-    banner.classList.remove("show");
-  }, 5000);
-}
-
-function addToCart(item) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const existing = cart.find(p => p.id === item.id);
-  if (existing) existing.qty += 1;
-  else cart.push({ ...item, qty: 1 });
-  localStorage.setItem("cart", JSON.stringify(cart));
-  showCartBanner();
-}
-
-// ✅ Render products for selected category
-const container = document.getElementById("products");
-
-function renderProducts(categoryKey) {
-  const items = productsByCategory[categoryKey] || [];
-
-  container.innerHTML = items.map(p => `
-    <div class="card">
-      <img src="${p.img}" class="card-img"/>
-      <h3>${p.name}</h3>
-      <p>₹${p.price}</p>
-      <button class="btn" onclick='addToCart(${JSON.stringify(p)})'>Add to Cart</button>
-    </div>
-  `).join("");
-
-  if (items.length === 0) {
-    container.innerHTML = `<p style="grid-column:1/-1; text-align:center; opacity:0.7;">No products in this category yet.</p>`;
+function getCart() {
+  try {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+  } catch {
+    return [];
   }
 }
 
-// ✅ Category Switch UI
+function setCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function showCartBanner() {
+  const banner = document.getElementById("cartBanner");
+  if (!banner) return;
+  banner.classList.add("show");
+  setTimeout(() => banner.classList.remove("show"), 3000);
+}
+
+// Merge by id (variant-specific id)
+function addToCart(item) {
+  const cart = getCart();
+  const existing = cart.find((p) => p.id === item.id);
+  if (existing) existing.qty += 1;
+  else cart.push({ ...item, qty: 1 });
+  setCart(cart);
+  showCartBanner();
+}
+
+// ===============================
+// PRODUCT RENDERING
+// ===============================
+const container = document.getElementById("products");
 const categoryBar = document.getElementById("categoryBar");
 
 function setActiveButton(activeKey) {
-  document.querySelectorAll(".cat-btn").forEach(btn => {
+  document.querySelectorAll(".cat-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.key === activeKey);
   });
 }
 
-categoryBar.innerHTML = categoryList.map(c => `
-  <button class="cat-btn" data-key="${c.key}">${c.label}</button>
-`).join("");
+function renderProducts(categoryKey) {
+  if (!container) return;
 
-// click handler
-categoryBar.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("cat-btn")) return;
-  const key = e.target.dataset.key;
-  setActiveButton(key);
-  renderProducts(key);
-});
+  const items = productsByCategory[categoryKey] || [];
 
-// ✅ Default category load
+  if (items.length === 0) {
+    container.innerHTML = `<p style="grid-column:1/-1; text-align:center; opacity:0.7;">No products in this category yet.</p>`;
+    return;
+  }
+
+  container.innerHTML = items
+    .map((p) => {
+      const hasVariants = Array.isArray(p.variants) && p.variants.length > 0;
+
+      const initialPrice = hasVariants ? p.variants[0].price : p.price;
+
+      const variantHtml = hasVariants
+        ? `
+          <select class="variant-select" data-product-id="${p.id}" data-category="${categoryKey}">
+            ${p.variants
+              .map((v) => `<option value="${v.label}">${v.label} - ₹${v.price}</option>`)
+              .join("")}
+          </select>
+        `
+        : "";
+
+      return `
+        <div class="card">
+          <img src="${p.img}" class="card-img" alt="${p.name}"/>
+          <h3>${p.name}</h3>
+          <p class="price" id="price-${p.id}">₹${initialPrice}</p>
+          ${variantHtml}
+          <button class="btn add-btn" data-cat="${categoryKey}" data-id="${p.id}">
+            Add to Cart
+          </button>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+// ===============================
+// EVENT HANDLERS
+// ===============================
+if (container) {
+  // 1) Add to cart (delegated)
+  container.addEventListener("click", (e) => {
+    const btn = e.target.closest(".add-btn");
+    if (!btn) return;
+
+    const cat = btn.dataset.cat;
+    const id = btn.dataset.id;
+
+    const product = (productsByCategory[cat] || []).find((p) => p.id === id);
+    if (!product) {
+      console.error("❌ Product not found:", cat, id);
+      return;
+    }
+
+    // If variants exist, read the selected variant
+    if (Array.isArray(product.variants) && product.variants.length > 0) {
+      const select = container.querySelector(
+        `select.variant-select[data-product-id="${id}"][data-category="${cat}"]`
+      );
+
+      const selectedLabel = select?.value || product.variants[0].label;
+      const selectedVariant =
+        product.variants.find((v) => v.label === selectedLabel) || product.variants[0];
+
+      addToCart({
+        id: `${product.id}-${selectedVariant.label}`, // unique per variant
+        name: `${product.name} (${selectedVariant.label})`,
+        price: selectedVariant.price,
+        img: product.img,
+        baseId: product.id,
+        variant: selectedVariant.label,
+        category: cat,
+      });
+    } else {
+      // No variants
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        img: product.img,
+        baseId: product.id,
+        category: cat,
+      });
+    }
+  });
+
+  // 2) Update price UI when variant dropdown changes
+  container.addEventListener("change", (e) => {
+    const sel = e.target.closest(".variant-select");
+    if (!sel) return;
+
+    const productId = sel.dataset.productId;
+    const cat = sel.dataset.category;
+
+    const product = (productsByCategory[cat] || []).find((p) => p.id === productId);
+    if (!product || !product.variants) return;
+
+    const selectedLabel = sel.value;
+    const selectedVariant =
+      product.variants.find((v) => v.label === selectedLabel) || product.variants[0];
+
+    const priceEl = document.getElementById(`price-${productId}`);
+    if (priceEl) priceEl.textContent = `₹${selectedVariant.price}`;
+  });
+}
+
+// ===============================
+// CATEGORY BAR
+// ===============================
+if (categoryBar) {
+  categoryBar.innerHTML = categoryList
+    .map((c) => `<button class="cat-btn" data-key="${c.key}">${c.label}</button>`)
+    .join("");
+
+  categoryBar.addEventListener("click", (e) => {
+    const btn = e.target.closest(".cat-btn");
+    if (!btn) return;
+
+    const key = btn.dataset.key;
+    setActiveButton(key);
+    renderProducts(key);
+  });
+}
+
+// Default load
 const defaultKey = "cakes";
 setActiveButton(defaultKey);
 renderProducts(defaultKey);
-
-

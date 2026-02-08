@@ -656,6 +656,175 @@ h1, h2, h3 {
   .total-box{ text-align: left; min-width: unset; }
   .searchbox{ width: 100%; }
 }
+.admin-wrap{
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    .admin-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin: 12px 0 18px;
+    }
+
+    .admin-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    .admin-col{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .admin-col h3{
+      margin: 0 0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    /* Make long order lists scroll inside each column */
+    .admin-list{
+      max-height: 72vh;
+      overflow:auto;
+      padding-right: 6px;
+    }
+
+    /* Better card spacing in columns */
+    #upcoming .card, #completed .card{
+      margin: 12px 0 !important;
+    }
+
+    /* Responsive: stack columns on mobile */
+    @media (max-width: 900px){
+      .admin-grid{ grid-template-columns: 1fr; }
+      .admin-list{ max-height: none; }
+    }
+/* ================================
+   Cake Weight Dropdown Styling
+================================ */
+
+.variant-select {
+  width: 100%;
+  margin: 10px 0 12px;
+  padding: 10px 12px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.15);
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  background: #fff;
+  color: #222;
+
+  outline: none;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+/* Hover effect */
+.variant-select:hover {
+  border-color: #ff7aa2;
+  box-shadow: 0 8px 18px rgba(255, 122, 162, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Focus effect */
+.variant-select:focus {
+  border-color: #ff4f88;
+  box-shadow: 0 0 0 4px rgba(255, 79, 136, 0.2);
+}
+
+/* Dropdown option styling */
+.variant-select option {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+/* Optional label style if you add one above dropdown */
+.variant-label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+/* ================================
+   Profile Card (My Orders Page)
+================================ */
+.profile-card {
+  margin: 18px 0;
+  padding: 18px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
+.profile-top h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  color: #222;
+}
+
+.profile-sub {
+  margin: 4px 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.profile-item {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 122, 162, 0.12);
+  border: 1px solid rgba(255, 122, 162, 0.2);
+}
+
+.profile-item span {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 4px;
+}
+
+.profile-item b {
+  font-size: 14px;
+  font-weight: 800;
+  color: #111;
+}
+
+@media(max-width: 800px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 

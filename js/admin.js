@@ -1,5 +1,6 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
 import {
   collection, query, where, orderBy, onSnapshot,
   doc, getDoc, updateDoc
@@ -17,6 +18,7 @@ async function requireAdmin(user) {
   const adminSnap = await getDoc(doc(db, "admins", user.uid));
   if (!adminSnap.exists()) {
     alert("Access denied: Admin only.");
+    await signOut(auth);
     window.location.href = "admin-login.html";
     return false;
   }
@@ -42,7 +44,7 @@ function attachHandlers(container) {
   container.querySelectorAll("button[data-complete]").forEach(btn => {
     btn.addEventListener("click", async () => {
       const id = btn.getAttribute("data-complete");
-      await updateDoc(doc(db, "orders", id), { status: "Completed" });
+      await updateDoc(doc(db, "orders", id), { status: "completed" });
     });
   });
 }
@@ -54,32 +56,30 @@ onAuthStateChanged(auth, async (user) => {
   }
   if (!(await requireAdmin(user))) return;
 
+  // ✅ Upcoming
   const qUpcoming = query(
     collection(db, "orders"),
-    where("status", "==", "Upcoming"),
+    where("status", "==", "upcoming"),
     orderBy("createdAt", "desc")
   );
 
   onSnapshot(qUpcoming, (snap) => {
-    if (snap.empty) {
-      upcomingDiv.innerHTML = "<p>No upcoming orders.</p>";
-      return;
-    }
-    upcomingDiv.innerHTML = snap.docs.map(d => card(d.id, d.data(), true)).join("");
+    upcomingDiv.innerHTML = snap.empty
+      ? "<p>No upcoming orders.</p>"
+      : snap.docs.map(d => card(d.id, d.data(), true)).join("");
     attachHandlers(upcomingDiv);
   });
 
+  // ✅ Completed
   const qCompleted = query(
     collection(db, "orders"),
-    where("status", "==", "Completed"),
+    where("status", "==", "completed"),
     orderBy("createdAt", "desc")
   );
 
   onSnapshot(qCompleted, (snap) => {
-    if (snap.empty) {
-      completedDiv.innerHTML = "<p>No completed orders.</p>";
-      return;
-    }
-    completedDiv.innerHTML = snap.docs.map(d => card(d.id, d.data(), false)).join("");
+    completedDiv.innerHTML = snap.empty
+      ? "<p>No completed orders.</p>"
+      : snap.docs.map(d => card(d.id, d.data(), false)).join("");
   });
 });

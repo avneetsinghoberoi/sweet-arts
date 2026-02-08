@@ -1,19 +1,12 @@
 import { auth, db } from "./firebase.js";
-import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
-
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
-import {
-  doc,
-  setDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
-
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+const email = document.getElementById("loginEmail");
+const password = document.getElementById("loginPassword");
 const msg = document.getElementById("msg");
 
 const signupFields = document.getElementById("signupFields");
@@ -22,45 +15,57 @@ const signupBtn = document.getElementById("signupBtn");
 document.getElementById("loginBtn").addEventListener("click", async () => {
   msg.textContent = "";
   try {
-    await signInWithEmailAndPassword(auth, email.value.trim(), password.value);
+    const em = email.value.trim();
+    const pw = password.value;
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+      msg.textContent = "Enter a valid email (example: name@gmail.com)";
+      return;
+    }
+
+    await signInWithEmailAndPassword(auth, em, pw);
     window.location.href = "my-orders.html";
   } catch (e) {
-    msg.textContent = e.message;
+    msg.textContent = `${e.code || ""} ${e.message || e}`;
   }
 });
 
 signupBtn.addEventListener("click", async () => {
   msg.textContent = "";
 
-  // 1st click: show signup fields only
   if (signupFields && signupFields.style.display === "none") {
     signupFields.style.display = "flex";
     signupBtn.textContent = "Register Now";
     return;
   }
 
-  // 2nd click: register user + save profile
-  const fullName = document.getElementById("fullName")?.value.trim();
-  const phone = document.getElementById("phone")?.value.trim();
-  const address = document.getElementById("address")?.value.trim();
+  const em = email.value.trim();
+  const pw = password.value;
 
+  const fullName = document.getElementById("signupFullName")?.value.trim();
+  const phone = document.getElementById("signupPhone")?.value.trim();
+  const address = document.getElementById("signupAddress")?.value.trim();
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+    msg.textContent = "Enter a valid email (example: name@gmail.com)";
+    return;
+  }
+  if (!pw || pw.length < 6) {
+    msg.textContent = "Password must be at least 6 characters.";
+    return;
+  }
   if (!fullName || !phone || !address) {
-    msg.textContent = "Please fill Full Name, Phone and Address.";
+    msg.textContent = "Fill Full Name, Phone and Address.";
     return;
   }
 
   try {
-    const userCred = await createUserWithEmailAndPassword(
-      auth,
-      email.value.trim(),
-      password.value
-    );
-
+    const userCred = await createUserWithEmailAndPassword(auth, em, pw);
     const uid = userCred.user.uid;
 
     await setDoc(doc(db, "users", uid), {
       uid,
-      email: email.value.trim(),
+      email: em,
       fullName,
       phone,
       address,
@@ -70,6 +75,12 @@ signupBtn.addEventListener("click", async () => {
 
     window.location.href = "my-orders.html";
   } catch (e) {
-    msg.textContent = e.message;
+    msg.textContent = `${e.code || ""} ${e.message || e}`;
   }
 });
+
+
+
+
+
+
